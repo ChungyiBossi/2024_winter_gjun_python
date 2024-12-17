@@ -3,10 +3,11 @@ def bubble_sort(numbers, is_log=False):
         for index in range(len(numbers)-1-round):
             if numbers[index] > numbers[index+1]:
                 numbers[index], numbers[index+1] = \
-                numbers[index+1], numbers[index]
+                    numbers[index+1], numbers[index]
         if is_log:
             print(round, numbers)
     return numbers
+
 
 def selection_sort(numbers, is_log=False):
     for round in range(len(numbers)-1):
@@ -19,6 +20,7 @@ def selection_sort(numbers, is_log=False):
         if is_log:
             print(round, numbers)
     return numbers
+
 
 if __name__ == "__main__":
     nums = [40, 50, 60, 30, 20]
