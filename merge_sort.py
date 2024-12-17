@@ -18,7 +18,7 @@ def merge(left, right):
 
 def merge_sort(numbers):
     # print(f"Level: {int(math.log2(len(numbers)))}", numbers)
-    if len(numbers) == 1:
+    if len(numbers) <= 1:
         return numbers
     else:
         mid_index = len(numbers)//2
