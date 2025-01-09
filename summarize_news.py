@@ -8,6 +8,10 @@ from openai_chatgpt import complete_chat
 
 # sol 2.
 news = pd.read_csv("news.csv")
-groups = news.groupby('topic_id')
+groups = news.groupby('topic_id')  # 依照 topic_id 分組 = 同 topic_id 為一組
 for gid, group in groups:
-    print(list(group['title']), '\n')
+    temp = list(group['title'])
+    message = "\n".join(temp)  # list -> string
+    print(message)
+    summarization = complete_chat(message)
+    print("Summarization = ", summarization, '\n')
