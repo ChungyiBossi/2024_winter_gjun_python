@@ -7,11 +7,21 @@ from openai_chatgpt import complete_chat
 #     print(record['title'])
 
 # sol 2.
-news = pd.read_csv("news.csv")
-groups = news.groupby('topic_id')  # 依照 topic_id 分組 = 同 topic_id 為一組
-for gid, group in groups:
-    temp = list(group['title'])
-    message = "\n".join(temp)  # list -> string
-    print(message)
-    summarization = complete_chat(message)
-    print("Summarization = ", summarization, '\n')
+
+
+def summarize_google_news(csv_file="news.csv"):
+    news = pd.read_csv(csv_file)
+    groups = news.groupby('topic_id')  # 依照 topic_id 分組 = 同 topic_id 為一組
+    summarizations = list()
+    for gid, group in groups:
+        temp = list(group['title'])
+        message = "\n".join(temp)  # list -> string
+        # print(message)
+        summarization = complete_chat(message)
+        print("Summarization = ", summarization, '\n')
+        summarizations.append(summarization)
+    return summarizations
+
+
+if __name__ == '__main__':
+    summarize_google_news()
