@@ -55,7 +55,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    user_id = event.source.user_id  # 使用者的ID，未來管理歷史訊息可以用
+    # user_id = event.source.user_id  # 使用者的ID，未來管理歷史訊息可以用
     user_message = event.message.text  # 使用者傳過來的訊息
 
     if user_message == "本日新聞摘要":
