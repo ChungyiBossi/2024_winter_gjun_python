@@ -61,8 +61,12 @@ def handle_message(event):
     user_message = event.message.text  # 使用者傳過來的訊息
 
     if user_message.strip() == "本日新聞摘要":
+        summarizations = [
+            f'{idx+1}: \n{summarization}\n'
+            for idx, summarization in enumerate(summarize_google_news())
+        ]
         responses = [
-            TextMessage(text="新聞摘要如下:\n" + "\n".join(summarize_google_news()))
+            TextMessage(text="新聞摘要如下:\n" + "".join(summarizations))
         ]
     else:
         responses = [
